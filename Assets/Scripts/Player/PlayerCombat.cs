@@ -4,10 +4,10 @@ public class PlayerCombat : MonoBehaviour
 {
     public Animator anim;
     public Transform attackpoint;
-    public float weaponRange = 1;
+    //public float weaponRange = 1;
     public LayerMask enemyLayer;
-    public int damage = 1;
-    public int damageHeavy = 5;
+    //public int damage = 1;
+    //public int damageHeavy = 5;
 
     public float cooldown = 1;
     public float cooldown_heavy = 3;
@@ -41,20 +41,20 @@ public class PlayerCombat : MonoBehaviour
 
     public void DealDamegeAttack()
     {
-        Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, weaponRange, enemyLayer);
+        Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, StatsManagerment.Instance.weaponRange , enemyLayer);
 
         if (enemis.Length > 0)
         {
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-damage);
+            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-StatsManagerment.Instance.damage);
         }
     }
     public void DealDamegeHeavyAttack()
     {
-        Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, weaponRange, enemyLayer);
+        Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, StatsManagerment.Instance.weaponRange, enemyLayer);
 
         if (enemis.Length > 0)
         {
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-damageHeavy);
+            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-StatsManagerment.Instance.damageHaevy);
         }
         
     }

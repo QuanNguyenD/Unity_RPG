@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    public float speed = 5;
+    //public float speed = 5;
     public int facingDirection = 1;
 
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("horizontal", Mathf.Abs(horizontal));
             animator.SetFloat("vertical", Mathf.Abs(vertical));
 
-            rb.linearVelocity = new Vector2(horizontal, vertical) * speed;
+            rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManagerment.Instance.speed;
         }
         
     }
