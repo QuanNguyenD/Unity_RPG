@@ -18,7 +18,7 @@ public class Enemy_Combat : MonoBehaviour
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(attackPoint.position, weaponRange, playerLayer);
 
-        if (hits.Length > 0) {
+        if (hits.Length > 0 && hits[0].gameObject.activeInHierarchy) {
             hits[0].GetComponent<PlayerHealth>().ChangeHealth(-damege);
             hits[0].GetComponent<PlayerMovement>().KnockBack(transform, knockbackForce, stunTime);
         }

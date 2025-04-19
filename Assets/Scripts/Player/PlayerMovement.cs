@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void KnockBack(Transform enemy, float force, float stunTime)
     {
+        if (!gameObject.activeInHierarchy) return;
         isKnockedBack = true;
 
         Vector2 direction = (transform.position - enemy.position).normalized;

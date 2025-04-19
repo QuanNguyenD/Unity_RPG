@@ -9,6 +9,8 @@ public class StatsManagerment : MonoBehaviour
     public int damage;
     public int damageHaevy;
     public float weaponRange;
+    public float CR;
+    public float CD;
 
     [Header("Movement Stats")]
 
@@ -23,7 +25,7 @@ public class StatsManagerment : MonoBehaviour
     {
         if (Instance == null)
         {
-            Instance =this; ;
+            Instance =this;
         }
         else
         {

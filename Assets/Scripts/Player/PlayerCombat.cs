@@ -39,13 +39,30 @@ public class PlayerCombat : MonoBehaviour
         
     }
 
+    public float CalculateDamageWithCrit(float baseDamage, float critRate, float critDamage)
+    {
+        bool isCrit = Random.value < critRate;
+        if (isCrit)
+        {
+            return baseDamage + baseDamage * critDamage;
+        }
+
+        return baseDamage;
+    }
+
     public void DealDamegeAttack()
     {
         Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, StatsManagerment.Instance.weaponRange , enemyLayer);
 
         if (enemis.Length > 0)
         {
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-StatsManagerment.Instance.damage);
+            if (enemis[0].isTrigger)
+            {
+                return;
+            }
+            float baseDamage = StatsManagerment.Instance.damage;
+            float finalDMG = CalculateDamageWithCrit(baseDamage,StatsManagerment.Instance.CR, StatsManagerment.Instance.CD);
+            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-(int)finalDMG);
         }
     }
     public void DealDamegeHeavyAttack()
@@ -54,7 +71,13 @@ public class PlayerCombat : MonoBehaviour
 
         if (enemis.Length > 0)
         {
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-StatsManagerment.Instance.damageHaevy);
+            if (enemis[0].isTrigger)
+            {
+                return;
+            }
+            float baseDamage = StatsManagerment.Instance.damageHaevy;
+            float finalDMG = CalculateDamageWithCrit(baseDamage, StatsManagerment.Instance.CR, StatsManagerment.Instance.CD);
+            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-(int)finalDMG);
         }
         
     }
