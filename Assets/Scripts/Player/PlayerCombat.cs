@@ -15,6 +15,9 @@ public class PlayerCombat : MonoBehaviour
     private float timer_heavy;
 
 
+
+
+
     private void Update()
     {
         if (timer > 0)
@@ -52,6 +55,9 @@ public class PlayerCombat : MonoBehaviour
 
     public void DealDamegeAttack()
     {
+        int flatPen = StatsManagerment.Instance.Flat_Pen;
+        float perPen = StatsManagerment.Instance.Perc;
+
         Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, StatsManagerment.Instance.weaponRange , enemyLayer);
 
         if (enemis.Length > 0)
@@ -62,11 +68,13 @@ public class PlayerCombat : MonoBehaviour
             }
             float baseDamage = StatsManagerment.Instance.damage;
             float finalDMG = CalculateDamageWithCrit(baseDamage,StatsManagerment.Instance.CR, StatsManagerment.Instance.CD);
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-(int)finalDMG);
+            enemis[0].GetComponent<Enemy_Heath>().TakeDamege((int)finalDMG, flatPen, perPen);
         }
     }
     public void DealDamegeHeavyAttack()
     {
+        int flatPen = StatsManagerment.Instance.Flat_Pen;
+        float perPen = StatsManagerment.Instance.Perc;
         Collider2D[] enemis = Physics2D.OverlapCircleAll(attackpoint.position, StatsManagerment.Instance.weaponRange, enemyLayer);
 
         if (enemis.Length > 0)
@@ -77,7 +85,7 @@ public class PlayerCombat : MonoBehaviour
             }
             float baseDamage = StatsManagerment.Instance.damageHaevy;
             float finalDMG = CalculateDamageWithCrit(baseDamage, StatsManagerment.Instance.CR, StatsManagerment.Instance.CD);
-            enemis[0].GetComponent<Enemy_Heath>().ChangeHealth(-(int)finalDMG);
+            enemis[0].GetComponent<Enemy_Heath>().TakeDamege((int)finalDMG, flatPen, perPen);
         }
         
     }

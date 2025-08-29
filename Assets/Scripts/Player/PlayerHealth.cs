@@ -27,4 +27,12 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void TakeDamege(int rawDamage)
+    {
+        int def = StatsManagerment.Instance.DEF;
+        int finalDamege = Mathf.RoundToInt(rawDamage * (100f / (100f + def)));
+
+        ChangeHealth(-finalDamege);
+    }
+
 }

@@ -11,6 +11,9 @@ public class StatsManagerment : MonoBehaviour
     public float weaponRange;
     public float CR;
     public float CD;
+    public int DEF;
+    public int Flat_Pen;
+    public float Perc;
 
     [Header("Movement Stats")]
 
