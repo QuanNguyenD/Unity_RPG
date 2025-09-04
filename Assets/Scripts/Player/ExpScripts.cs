@@ -48,7 +48,7 @@ public class ExpScripts : MonoBehaviour
     private void LevelUp()
     {
         level++;
-        curentEXP = -expToLevel;
+        curentEXP -=expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * expGrow);
     }
 

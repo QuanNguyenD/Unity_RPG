@@ -23,6 +23,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (StatsManagerment.Instance.currentHealth <= 0)
         {
+            healthText.text = "HP: 0 ";
             gameObject.SetActive(false);
         }
     }
