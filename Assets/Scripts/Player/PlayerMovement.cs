@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called x50 frame
     void FixedUpdate()
-    {
+    { 
         if (isKnockedBack == false) {
 
             float horizontal = Input.GetAxis("Horizontal");
