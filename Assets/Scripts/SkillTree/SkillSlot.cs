@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using System;
+using NUnit.Framework;
+using System.Collections.Generic;
 public class SkillSlot : MonoBehaviour
 {
     public SkillSO skillSO;
+    public List<SkillSlot> prerequisiteSkillSLots;
 
     public int currentLevel;
     public bool isUnlocked;
@@ -12,12 +15,50 @@ public class SkillSlot : MonoBehaviour
     public Button skillButton;
     public Image skillIcon;
 
+    public static event Action<SkillSlot> OnAbilityPointSpent;
+    public static event Action<SkillSlot> OnSkillMaxed;
     private void OnValidate()
     {
         if(skillSO != null && skillLevelText!= null){
               
             UpdateUI();
         }
+    }
+
+    public void TryUpgradeSkill()
+    {
+        if(isUnlocked && currentLevel < skillSO.maxLevel)
+        {
+            currentLevel++;
+            OnAbilityPointSpent?.Invoke(this);
+
+            if (currentLevel >= skillSO.maxLevel)
+            {
+                OnSkillMaxed?.Invoke(this);
+            }
+            UpdateUI();
+
+        }
+    }
+
+    public bool CanUnlockSkill()
+    {
+        foreach(SkillSlot item in prerequisiteSkillSLots)
+        {
+            if (!item.isUnlocked || item.currentLevel < item.skillSO.maxLevel )
+            {
+                return false;   
+            }
+        }
+
+
+        return true;
+    }
+
+    public void Unlock()
+    {
+        isUnlocked = true;
+        UpdateUI();
     }
 
     private void UpdateUI()
