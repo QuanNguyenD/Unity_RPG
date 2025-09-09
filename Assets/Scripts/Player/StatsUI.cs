@@ -6,6 +6,8 @@ public class StatsUI : MonoBehaviour
     public GameObject[] statsSlots;
     public CanvasGroup ststsCanvas;
 
+    public static StatsUI Instance;
+
     private bool statsOpen = false;
 
     private void Start()
@@ -35,6 +37,12 @@ public class StatsUI : MonoBehaviour
             }
             
         }
+
+        if (statsOpen) 
+        {
+            AllUpdateStats();
+        }
+
     }
 
     public void UpdateDamage()

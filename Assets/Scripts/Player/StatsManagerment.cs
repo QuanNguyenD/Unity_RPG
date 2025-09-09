@@ -1,8 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class StatsManagerment : MonoBehaviour
 {
     public static StatsManagerment Instance;
+    public TMP_Text healthText;
 
 
     [Header("Combat")]
@@ -35,5 +37,26 @@ public class StatsManagerment : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void UpdateMaxHealth(int amount)
+    {
+        maxHealth += amount;
+        healthText.text = "HP: "+currentHealth+ "/" + maxHealth; 
+    }
+
+    public void UpdateMaxATK(int amount)
+    {
+        damage += amount;
+        damageHaevy += amount *2;
+        
+
+
+    }
+
+    public void UpdateDef(int amount)
+    {
+        DEF += amount;
+    }
+
+
 
 }
