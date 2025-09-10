@@ -12215,6 +12215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 1924949894}
   arrowPrefab: {fileID: 7674682571712464213, guid: 6a0a0f24aa2de0b499781f66b350c47d, type: 3}
+  shootCooldown: 0.3
+  shootTimer: 0
 --- !u!224 &458487774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7417205505469387262, guid: 71a0eea99ff24444bad20b3e93c36ba2, type: 3}
