@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
     private bool isKnockedBack;
+    public bool isShooting;
 
 
 
@@ -40,8 +41,15 @@ public class PlayerMovement : MonoBehaviour
 
     // Update is called x50 frame
     void FixedUpdate()
-    { 
-        if (isKnockedBack == false) {
+    {
+        if (isShooting == true) 
+        {
+            rb.linearVelocity = Vector2.zero;
+        
+        } 
+
+
+        else if (isKnockedBack == false) {
 
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

@@ -11987,6 +11987,7 @@ GameObject:
   - component: {fileID: 447275447}
   - component: {fileID: 447275448}
   - component: {fileID: 447275449}
+  - component: {fileID: 447275450}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -12145,6 +12146,7 @@ MonoBehaviour:
   facingDirection: 1
   rb: {fileID: 447275441}
   animator: {fileID: 447275446}
+  isShooting: 0
   player_Combat: {fileID: 447275448}
 --- !u!95 &447275446
 Animator:
@@ -12208,15 +12210,31 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447275440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 521f6e5a27ed1d746acd96c9e98babc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 1924949894}
   arrowPrefab: {fileID: 7674682571712464213, guid: 6a0a0f24aa2de0b499781f66b350c47d, type: 3}
+  anim: {fileID: 447275446}
+  playerMove: {fileID: 447275445}
   shootCooldown: 0.3
   shootTimer: 0
+--- !u!114 &447275450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447275440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 762908943f3be3846932c01c6c52c72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combat: {fileID: 447275448}
+  bow: {fileID: 447275449}
 --- !u!224 &458487774 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7417205505469387262, guid: 71a0eea99ff24444bad20b3e93c36ba2, type: 3}
@@ -22639,7 +22657,7 @@ Transform:
   m_GameObject: {fileID: 1924949893}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.675, y: -0.042, z: 0}
+  m_LocalPosition: {x: 0.188, y: 0.024, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
