@@ -1,3 +1,6 @@
+
+![Pic](Assets/Pic/Gif1.gif)
+![Pic](Assets/Pic/Gif2.gif)
 UI ingame
 
 ![Pic](Assets/Pic/Pic2.png)
